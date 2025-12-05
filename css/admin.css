@@ -1,0 +1,109 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    /* height: 100vh; এটা বাদ দেওয়া হয়েছে যাতে স্ক্রল করা যায় */
+    min-height: 100vh; 
+    margin: 0;
+    padding: 40px 0; /* উপরে ও নিচে জায়গা রাখা হলো */
+    box-sizing: border-box;
+}
+
+.admin-container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 450px; /* একটু চওড়া করা হলো */
+    margin: auto; /* এটা মাঝখানে রাখবে */
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0 20px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/* --- Orders Page Style --- */
+.order-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    background: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+.customer-info {
+    margin-bottom: 10px;
+    line-height: 1.5;
+    color: #333;
+}
+
+.customer-info a {
+    text-decoration: none;
+    color: blue;
+    font-weight: bold;
+}
+
+.order-items {
+    background: #fff;
+    padding: 10px;
+    border: 1px dashed #ccc;
+    font-size: 14px;
+    color: #444;
+}
+
+.order-total {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #2874f0;
+    text-align: right;
+}
+
+.delete-btn {
+    background-color: #ff6161;
+    margin-top: 10px;
+    padding: 8px;
+    font-size: 12px;
+}
+
+.delete-btn:hover {
+    background-color: #d63030;
+}
