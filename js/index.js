@@ -100,3 +100,47 @@ function updateCartCount() {
         countElement.innerText = total;
     }
 }
+// --- User Auth Check ---
+
+// পেজ লোড হলে দেখবে ইউজার লগইন আছে কিনা
+window.addEventListener('DOMContentLoaded', async () => {
+    // আগের সব কোড... (updateCartCount, fetchProducts)
+    
+    checkUserLogin();
+});
+
+async function checkUserLogin() {
+    // Supabase থেকে চেক করা
+    const { data: { user } } = await supabase.auth.getUser();
+    const accountText = document.getElementById('accountText');
+
+    if (user) {
+        // লগইন করা থাকলে নাম দেখাবে
+        const name = user.user_metadata.full_name || "User";
+        accountText.innerText = name.split(" ")[0]; // শুধু প্রথম নাম দেখাবে
+        
+        // লোকাল স্টোরেজেও সেভ রাখি
+        localStorage.setItem("userName", name);
+        localStorage.setItem("userEmail", user.email);
+    } else {
+        accountText.innerText = "Login";
+    }
+}
+
+// Account বাটনে চাপ দিলে কী হবে
+function checkAccount() {
+    const text = document.getElementById('accountText').innerText;
+
+    if (text === "Login") {
+        // লগইন না থাকলে লগইন পেজে যাবে
+        window.location.href = "user-login.html";
+    } else {
+        // লগইন থাকলে লগআউট করার অপশন দেবে
+        if(confirm(`Hello ${text}! Do you want to logout?`)) {
+            supabase.auth.signOut().then(() => {
+                localStorage.removeItem("userName");
+                window.location.reload();
+            });
+        }
+    }
+}

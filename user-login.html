@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Sign Up - Keshab Store</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/user-login.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <div class="login-wrapper">
+        <div class="form-container">
+            <!-- টগল বাটন -->
+            <div class="btn-box">
+                <button id="loginBtn" class="toggle-btn active" onclick="showLogin()">Login</button>
+                <button id="signupBtn" class="toggle-btn" onclick="showSignup()">Sign Up</button>
+            </div>
+
+            <!-- লগইন ফর্ম -->
+            <form id="loginForm" class="input-group">
+                <input type="email" id="lEmail" class="input-field" placeholder="Email ID" required>
+                <input type="password" id="lPassword" class="input-field" placeholder="Password" required>
+                <button type="submit" class="submit-btn">Login</button>
+                <p id="loginError" class="error-msg"></p>
+            </form>
+
+            <!-- সাইন আপ ফর্ম -->
+            <form id="signupForm" class="input-group" style="display: none;">
+                <input type="text" id="sName" class="input-field" placeholder="Full Name" required>
+                <input type="email" id="sEmail" class="input-field" placeholder="Email ID" required>
+                <input type="password" id="sPassword" class="input-field" placeholder="Create Password (min 6 chars)" required>
+                <button type="submit" class="submit-btn">Sign Up</button>
+                <p id="signupError" class="error-msg"></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/user-auth.js"></script>
+
+</body>
+</html>

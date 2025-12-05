@@ -12,7 +12,7 @@
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
-    <!-- Google Font (Roboto - Flipkart uses similar) -->
+    <!-- Google Font (Roboto) -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
     <!-- Supabase -->
@@ -58,7 +58,7 @@
     <div class="banner-section">
         <img src="https://rukminim1.flixcart.com/fk-p-flap/844/140/image/444869af7d31e58b.jpg" alt="Offer Banner" width="100%">
     </div>
-
+    
     <!-- ৪. প্রোডাক্ট সেকশন -->
     <div class="section-title">
         <h3>Recently Added</h3>
@@ -74,9 +74,9 @@
     <!-- স্পেস রাখা যাতে নিচের মেনুতে ঢাকা না পড়ে -->
     <div style="height: 80px;"></div>
 
-    <!-- ৫. বটম নেভিগেশন বার (Bottom Nav) -->
+    <!-- ৫. বটম নেভিগেশন বার (Bottom Nav - Updated) -->
     <nav class="bottom-nav">
-        <div class="nav-item active">
+        <div class="nav-item active" onclick="window.location.href='index.html'">
             <i class="fas fa-home"></i>
             <span>Home</span>
         </div>
@@ -88,10 +88,13 @@
             <i class="fas fa-bell"></i>
             <span>Notifications</span>
         </div>
-        <div class="nav-item">
+        
+        <!-- Account Section (Updated Logic) -->
+        <div class="nav-item" onclick="checkAccount()">
             <i class="fas fa-user"></i>
-            <span>Account</span>
+            <span id="accountText">Login</span> <!-- এখানে নাম দেখাবে -->
         </div>
+        
         <div class="nav-item" onclick="window.location.href='cart.html'">
             <i class="fas fa-shopping-cart"></i>
             <span>Cart</span>
