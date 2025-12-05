@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Keshab Store (Flipkart Style)</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/index.css">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Font (Roboto - Flipkart uses similar) -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <!-- ১. টপ হেডার (Top Header) -->
+    <header class="app-header">
+        <div class="header-top">
+            <div class="menu-icon"><i class="fas fa-bars"></i></div>
+            <div class="logo">
+                <span class="brand-name">Keshab Store</span>
+                <div class="sub-logo">Explore <span class="plus">Plus</span> <i class="fas fa-star star-icon"></i></div>
+            </div>
+            <div class="header-icons">
+                <i class="fas fa-bell"></i>
+                <div class="cart-wrap" onclick="window.location.href='cart.html'">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cartCount">0</span>
+                </div>
+            </div>
+        </div>
+        <!-- সার্চ বার -->
+        <div class="search-bar-wrapper">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search for Products, Brands and More">
+            </div>
+        </div>
+    </header>
+
+    <!-- ২. ক্যাটাগরি আইকন (Horizontal Scroll) -->
+    <div class="category-scroll">
+        <div class="cat-item"><img src="https://rukminim1.flixcart.com/flap/128/128/image/29327f40e9c4d26b.png" alt="Grocery"><span>Grocery</span></div>
+        <div class="cat-item"><img src="https://rukminim1.flixcart.com/flap/128/128/image/22fddf3c7da4c4f4.png" alt="Mobiles"><span>Mobiles</span></div>
+        <div class="cat-item"><img src="https://rukminim1.flixcart.com/flap/128/128/image/c12afc017e6f24cb.png" alt="Fashion"><span>Fashion</span></div>
+        <div class="cat-item"><img src="https://rukminim1.flixcart.com/flap/128/128/image/69c6589653afdb9a.png" alt="Electronics"><span>Electronics</span></div>
+        <div class="cat-item"><img src="https://rukminim1.flixcart.com/flap/128/128/image/ab7e2b022a4587dd.png" alt="Home"><span>Home</span></div>
+    </div>
+
+    <!-- ৩. ব্যানার ইমেজ -->
+    <div class="banner-section">
+        <img src="https://rukminim1.flixcart.com/fk-p-flap/844/140/image/444869af7d31e58b.jpg" alt="Offer Banner" width="100%">
+    </div>
+
+    <!-- ৪. প্রোডাক্ট সেকশন -->
+    <div class="section-title">
+        <h3>Recently Added</h3>
+        <button class="view-all">View all</button>
+    </div>
+
+    <div id="loading" class="loading-spinner">Loading amazing products...</div>
+    
+    <div class="product-grid" id="productContainer">
+        <!-- JS দিয়ে কার্ড এখানে আসবে -->
+    </div>
+
+    <!-- স্পেস রাখা যাতে নিচের মেনুতে ঢাকা না পড়ে -->
+    <div style="height: 80px;"></div>
+
+    <!-- ৫. বটম নেভিগেশন বার (Bottom Nav) -->
+    <nav class="bottom-nav">
+        <div class="nav-item active">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-th-large"></i>
+            <span>Categories</span>
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-bell"></i>
+            <span>Notifications</span>
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>Account</span>
+        </div>
+        <div class="nav-item" onclick="window.location.href='cart.html'">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Cart</span>
+        </div>
+    </nav>
+
+    <!-- স্ক্রিপ্ট -->
+    <script src="js/config.js"></script>
+    <script src="js/index.js"></script>
+
+</body>
+</html>

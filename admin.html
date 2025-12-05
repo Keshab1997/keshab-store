@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Keshab Store</title>
+    
+    <!-- CSS কানেকশন -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/admin.css">
+
+    <!-- Supabase লাইব্রেরি -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- PapaParse লাইব্রেরি (CSV/Excel পড়ার জন্য) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+</head>
+<body>
+
+    <div class="admin-container">
+        
+        <!-- ১. অর্ডার দেখার বাটন (নতুন যোগ করা হয়েছে) -->
+        <div style="text-align: right; margin-bottom: 20px;">
+            <button onclick="window.location.href='admin-orders.html'" 
+                    style="background: #ff9f00; color: white; width: auto; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">
+                View All Orders 📦
+            </button>
+        </div>
+
+        <!-- Single Upload Section -->
+        <h2>Add Single Product</h2>
+        
+        <form id="addProductForm">
+            <label>Product Name:</label>
+            <input type="text" id="pName" placeholder="Ex: Cotton Kurta" required>
+
+            <!-- এখানে INR বা রুপি করা হয়েছে -->
+            <label>Price (INR ₹):</label>
+            <input type="number" id="pPrice" placeholder="Ex: 500" required>
+
+            <label>Category:</label>
+            <select id="pCategory">
+                <option value="Fashion">Fashion</option>
+                <option value="Electronics">Electronics</option>
+                <option value="Grocery">Grocery</option>
+                <option value="Home">Home & Decor</option>
+            </select>
+
+            <label>Image Direct Link (ImgBB/Postimages):</label>
+            <input type="text" id="pImage" placeholder="Paste image link here (https://...)" required>
+
+            <button type="submit" id="uploadBtn">Upload Single Product</button>
+        </form>
+
+        <!-- দাগ বা বর্ডার -->
+        <hr style="margin: 30px 0; border: 1px dashed #ccc;">
+
+        <!-- Bulk Upload Section -->
+        <h2 style="color: #004085;">Bulk Upload (Excel/CSV)</h2>
+        <p style="font-size: 14px; color: #666;">Upload .csv file with headers: <b>name, price, category, image_url</b></p>
+        
+        <input type="file" id="csvFileInput" accept=".csv" style="background: #e9ecef; padding: 10px; border: 1px solid #ced4da; width: 100%; box-sizing: border-box;">
+        
+        <button id="bulkUploadBtn" style="margin-top: 15px; background-color: #004085;">Upload All From CSV</button>
+    </div>
+
+    <!-- JS কানেকশন -->
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script> <!-- এই লাইনটা নতুন যোগ করুন -->
+    <script src="js/admin.js"></script>
+
+</body>
+</html>

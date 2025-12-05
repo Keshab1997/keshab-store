@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Customer Orders</title>
+    
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/admin.css">
+    
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <div class="admin-container" style="max-width: 600px;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2>📦 Customer Orders</h2>
+            <button onclick="window.location.href='admin.html'" style="background: #333; width: auto; padding: 5px 10px;">Back</button>
+        </div>
+        
+        <div id="ordersContainer">
+            <p>Loading orders...</p>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script> <!-- এই লাইনটা নতুন যোগ করুন -->
+    
+    <script>
+        // অর্ডার লোড করার স্ক্রিপ্ট
+        async function loadOrders() {
+            const container = document.getElementById('ordersContainer');
+
+            // Supabase থেকে অর্ডার আনা (নতুন অর্ডার আগে দেখাবে)
+            const { data: orders, error } = await supabase
+                .from('orders')
+                .select('*')
+                .order('created_at', { ascending: false });
+
+            container.innerHTML = ""; // লোডিং লেখা সরিয়ে ফেলা
+
+            if (error) {
+                container.innerHTML = `<p style="color:red">Error: ${error.message}</p>`;
+                return;
+            }
+
+            if (orders.length === 0) {
+                container.innerHTML = "<p>No orders found!</p>";
+                return;
+            }
+
+            // অর্ডার কার্ড বানানো
+            orders.forEach(order => {
+                const date = new Date(order.created_at).toLocaleString();
+                
+                const div = document.createElement('div');
+                div.className = 'order-card';
+                div.innerHTML = `
+                    <div class="order-header">
+                        <span class="order-id">Order ID: #${order.id}</span>
+                        <span class="order-date">${date}</span>
+                    </div>
+                    <div class="customer-info">
+                        <strong>👤 ${order.customer_name}</strong> <br>
+                        📞 <a href="tel:${order.phone}">${order.phone}</a> <br>
+                        📍 ${order.address}
+                    </div>
+                    <div class="order-items">
+                        <strong>Items:</strong> <br>
+                        ${order.items}
+                    </div>
+                    <div class="order-total">
+                        Total Bill: ₹${order.total_amount}
+                    </div>
+                    <button onclick="deleteOrder(${order.id})" class="delete-btn">Mark as Delivered (Delete)</button>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // অর্ডার ডিলিট করার ফাংশন (ডেলিভারি হয়ে গেলে)
+        async function deleteOrder(id) {
+            if(confirm("Are you sure this order is delivered? It will be deleted.")) {
+                const { error } = await supabase
+                    .from('orders')
+                    .delete()
+                    .eq('id', id);
+                
+                if(!error) {
+                    alert("Order removed!");
+                    loadOrders(); // লিস্ট রিফ্রেশ
+                } else {
+                    alert("Error deleting!");
+                }
+            }
+        }
+
+        // পেজ লোড হলেই ফাংশন কল হবে
+        loadOrders();
+    </script>
+
+</body>
+</html>

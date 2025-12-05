@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>My Cart</title>
+    
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/cart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="cart-header">
+        <i class="fas fa-arrow-left" onclick="window.location.href='index.html'"></i>
+        <span>My Cart</span>
+    </div>
+
+    <!-- Cart Items List -->
+    <div id="cartItemsContainer" class="cart-container">
+        <!-- JS দিয়ে আইটেম এখানে আসবে -->
+    </div>
+
+    <!-- Price Details (Bill) -->
+    <div id="priceDetails" class="price-details" style="display: none;">
+        <h3>Price Details</h3>
+        <div class="row">
+            <span>Price (<span id="totalItems">0</span> items)</span>
+            <span id="totalPrice">₹0</span>
+        </div>
+        <div class="row">
+            <span>Delivery Charges</span>
+            <span style="color: green;">FREE</span>
+        </div>
+        <hr>
+        <div class="row total-row">
+            <span>Total Amount</span>
+            <span id="finalAmount">₹0</span>
+        </div>
+    </div>
+
+    <!-- Empty Cart Message -->
+    <div id="emptyCartMsg" class="empty-cart" style="display: none;">
+        <img src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png" alt="Empty">
+        <h3>Your cart is empty!</h3>
+        <p>Add items to it now.</p>
+        <button onclick="window.location.href='index.html'">Shop Now</button>
+    </div>
+
+    <!-- Bottom Bar (Place Order) -->
+    <div class="bottom-bar" id="bottomBar" style="display: none;">
+        <div class="total-view">
+            <span id="bottomTotal">₹0</span>
+            <a href="#priceDetails" style="font-size: 12px; color: blue;">View Price Details</a>
+        </div>
+        <button class="place-order-btn" onclick="openCheckoutModal()">Place Order</button>
+    </div>
+
+    <!-- Checkout Modal (Popup Form) -->
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content">
+            <h3>Delivery Details</h3>
+            <input type="text" id="cName" placeholder="Full Name" required>
+            <input type="tel" id="cPhone" placeholder="Mobile Number" required>
+            <textarea id="cAddress" placeholder="Full Address (Area, City, Pin)" rows="3" required></textarea>
+            
+            <div class="modal-buttons">
+                <button class="cancel-btn" onclick="closeModal()">Cancel</button>
+                <button class="confirm-btn" onclick="placeOrder()">Confirm Order</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+</html>
