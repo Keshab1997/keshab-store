@@ -1,0 +1,194 @@
+/* Flipkart Profile Page CSS */
+
+body {
+    background-color: #f1f3f6;
+    font-family: 'Roboto', sans-serif;
+}
+
+.profile-container {
+    max-width: 1200px;
+    margin: 80px auto 20px auto; /* Header height er por theke shuru */
+    display: flex;
+    gap: 16px;
+    padding: 0 10px;
+}
+
+/* --- Left Sidebar --- */
+.sidebar {
+    width: 280px; /* Fixed width like Flipkart */
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Hello Box */
+.user-hello-box {
+    background: white;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.08);
+    border-radius: 2px;
+}
+.user-hello-box img {
+    width: 50px;
+    height: 50px;
+}
+.hello-text .small { font-size: 12px; color: #212121; }
+.hello-text .name { font-size: 16px; font-weight: 600; color: #212121; }
+
+/* Menu Styles */
+.side-menu {
+    background: white;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.08);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.menu-group {
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.menu-head {
+    padding: 15px 20px;
+    font-size: 14px; /* Changed to match Flipkart font size */
+    font-weight: 500;
+    color: #878787;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+}
+.menu-head i {
+    margin-right: 15px;
+    width: 20px;
+    text-align: center;
+    font-size: 18px;
+}
+.menu-head .arrow { margin-left: auto; }
+
+/* Submenu Links */
+.submenu {
+    display: flex;
+    flex-direction: column;
+}
+.submenu a {
+    padding: 12px 20px 12px 55px; /* Indented */
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    transition: 0.2s;
+}
+.submenu a:hover {
+    background: #f5faff;
+    color: #2874f0;
+}
+/* Active State */
+.submenu a.active {
+    background: #f5faff;
+    color: #2874f0;
+    font-weight: 500;
+}
+.balance { color: #2874f0; float: right; font-weight: 500; }
+
+.logout-section { border-bottom: none; margin-top: 10px; border-top: 1px solid #f0f0f0; }
+
+/* --- Right Main Content --- */
+.main-content {
+    flex-grow: 1;
+    background: white;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.08);
+    border-radius: 2px;
+    padding: 24px 32px;
+}
+
+/* Sections */
+.info-section { margin-bottom: 40px; }
+
+.section-title {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.edit-btn {
+    font-size: 14px;
+    color: #2874f0;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* Inputs */
+.form-row {
+    display: flex;
+    gap: 20px;
+    max-width: 600px;
+}
+.input-field {
+    width: 250px;
+    height: 50px;
+    padding: 0 15px;
+    font-size: 14px;
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    color: #212121;
+    outline: none;
+    background: #fff;
+}
+.input-field:disabled {
+    background-color: #f9f9f9; /* Slightly darker for disabled */
+    color: #878787;
+    border: 1px solid #f0f0f0;
+    cursor: not-allowed;
+}
+.input-field.full-width { width: 350px; }
+
+/* Gender Radio */
+.gender-section {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.gender-section .label { font-size: 14px; color: #212121; }
+
+.radio-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+    gap: 8px;
+}
+.radio-container input { margin: 0; cursor: pointer; }
+
+/* FAQs */
+.faq-section { margin-top: 50px; }
+.faq-section h3 { font-size: 18px; font-weight: 500; margin-bottom: 20px; }
+.faq-section h4 { font-size: 14px; font-weight: 500; margin-bottom: 8px; }
+.faq-section p { font-size: 12px; color: #212121; line-height: 1.5; margin-bottom: 20px; }
+
+/* Save Button */
+.save-btn {
+    background: #2874f0;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 2px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .profile-container { flex-direction: column; margin-top: 60px; }
+    .sidebar { width: 100%; }
+    .main-content { padding: 15px; }
+    .form-row { flex-direction: column; gap: 10px; }
+    .input-field { width: 100%; }
+}

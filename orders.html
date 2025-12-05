@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders - Keshab Store</title>
+    
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/index.css">   <!-- হেডার স্টাইল -->
+    <link rel="stylesheet" href="css/profile.css"> <!-- লেআউট স্টাইল -->
+    <link rel="stylesheet" href="css/orders.css">  <!-- স্পেশাল অর্ডার স্টাইল -->
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <!-- ১. হেডার (Same as Index/Profile) -->
+    <header class="app-header">
+        <div class="header-content">
+            <div class="logo-section">
+                <a href="index.html" style="text-decoration: none; color: white;">
+                    <div class="brand-name">Keshab<span class="plus">Store</span></div>
+                    <div class="sub-logo">Explore <span class="plus">Plus</span> <i class="fas fa-star star-icon"></i></div>
+                </a>
+            </div>
+            <div class="desktop-search">
+                <div class="search-box">
+                    <input type="text" placeholder="Search for Products, Brands and More">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+            <div class="desktop-user-actions">
+                <div class="profile-dropdown">
+                    <span class="user-name" id="headerUserName">My Account</span>
+                </div>
+            </div>
+            <div class="header-cart" onclick="window.location.href='cart.html'">
+                <div class="cart-wrap"><i class="fas fa-shopping-cart"></i></div>
+                <span class="cart-text">Cart</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ২. মেইন কন্টেইনার -->
+    <div class="profile-container">
+        
+        <!-- বামদিকের সাইডবার (Profile Page এর মতোই) -->
+        <div class="sidebar">
+            <div class="user-hello-box">
+                <img src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/profile-pic-male_4811a1.svg" alt="User">
+                <div class="hello-text">
+                    <div class="small">Hello,</div>
+                    <div class="name" id="sidebarName">User</div>
+                </div>
+            </div>
+
+            <div class="side-menu">
+                <!-- My Orders Active -->
+                <div class="menu-group" style="background: #f5faff;">
+                    <div class="menu-head" style="color: #2874f0; font-weight: 600;">
+                        <i class="fas fa-box-open" style="color: #2874f0;"></i> MY ORDERS <span class="arrow">></span>
+                    </div>
+                </div>
+
+                <div class="menu-group">
+                    <div class="menu-head" onclick="window.location.href='profile.html'">
+                        <i class="fas fa-user"></i> ACCOUNT SETTINGS
+                    </div>
+                </div>
+
+                <div class="menu-group">
+                    <div class="menu-head"><i class="fas fa-wallet"></i> PAYMENTS</div>
+                </div>
+                
+                <div class="menu-group logout-section">
+                    <div class="menu-head" onclick="logoutUser()">
+                        <i class="fas fa-power-off"></i> Logout
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ডানদিকের অর্ডার লিস্ট -->
+        <div class="main-content" style="background: transparent; box-shadow: none; padding: 0;">
+            
+            <!-- অর্ডার সার্চ বার -->
+            <div class="order-search-bar">
+                <input type="text" placeholder="Search your orders here">
+                <button><i class="fas fa-search"></i> <span>Search Orders</span></button>
+            </div>
+
+            <!-- এখানে JS দিয়ে অর্ডার লোড হবে -->
+            <div id="ordersContainer">
+                <div class="loading-spinner">Loading your orders...</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/orders.js"></script>
+
+</body>
+</html>

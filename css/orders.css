@@ -1,0 +1,168 @@
+/* css/orders.css - Specific styles for Orders Page */
+
+/* Search Bar Styles */
+.order-search-bar {
+    background: white;
+    display: flex;
+    padding: 0;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.1);
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+.order-search-bar input {
+    flex-grow: 1;
+    border: none;
+    padding: 12px 20px;
+    font-size: 14px;
+    outline: none;
+}
+.order-search-bar button {
+    background: #2874f0;
+    color: white;
+    border: none;
+    padding: 0 30px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Order Item Card */
+.order-card {
+    background: white;
+    display: flex;
+    padding: 16px;
+    border-bottom: 1px solid #f0f0f0; /* Separator */
+    margin-bottom: 2px; /* Spacing */
+    border-radius: 2px;
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+    text-decoration: none;
+    color: inherit;
+}
+.order-card:hover {
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    z-index: 1;
+}
+
+/* Image Section */
+.order-img-box {
+    width: 120px;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}
+.order-img-box img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+/* Details Section */
+.order-details {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.order-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #212121;
+    margin-bottom: 5px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.order-subtitle {
+    font-size: 12px;
+    color: #878787;
+    margin-bottom: 2px;
+}
+
+/* Price Section */
+.order-price {
+    width: 100px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #212121;
+    display: flex;
+    align-items: center;
+}
+
+/* Status Section */
+.order-status {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.status-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #212121;
+    margin-bottom: 5px;
+}
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+.status-dot.delivered { background-color: #26a541; } /* Green */
+.status-dot.cancelled { background-color: #ff6161; } /* Red */
+.status-dot.shipping { background-color: #ff9f00; } /* Orange */
+
+.status-subtext {
+    font-size: 12px;
+    color: #212121;
+    margin-left: 18px;
+}
+.rate-link {
+    font-size: 13px;
+    color: #2874f0;
+    font-weight: 500;
+    margin-left: 18px;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Empty State */
+.no-orders {
+    background: white;
+    padding: 50px;
+    text-align: center;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+}
+.shop-now-btn {
+    background: #2874f0;
+    color: white;
+    padding: 10px 30px;
+    border: none;
+    margin-top: 20px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .profile-container { flex-direction: column; }
+    .sidebar { display: none; /* Mobile e sidebar bad dite paro ba menu icon e rakhute paro */ }
+    .order-card { flex-direction: column; gap: 10px; position: relative;}
+    .order-img-box { width: 60px; height: 60px; position: absolute; top: 10px; left: 10px;}
+    .order-details { margin-left: 70px; }
+    .order-price { margin-left: 70px; margin-top: -5px; }
+    .order-status { width: 100%; margin-left: 70px; margin-top: 5px;}
+    .order-search-bar button span { display: none; } /* Only icon on mobile */
+}

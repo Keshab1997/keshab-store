@@ -5,14 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Keshab Store (Flipkart Style)</title>
     
-    <!-- CSS -->
+    <!-- CSS Links -->
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/index.css">
     
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <!-- Google Font (Roboto) -->
+    <!-- FontAwesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
     <!-- Supabase -->
@@ -20,88 +18,153 @@
 </head>
 <body>
 
-    <!-- ১. টপ হেডার (Top Header) -->
+    <!-- ১. হেডার সেকশন (Desktop & Mobile Combined) -->
     <header class="app-header">
-        <div class="header-top">
-            <div class="menu-icon"><i class="fas fa-bars"></i></div>
-            <div class="logo">
-                <span class="brand-name">Keshab Store</span>
-                <div class="sub-logo">Explore <span class="plus">Plus</span> <i class="fas fa-star star-icon"></i></div>
+        <div class="header-content">
+            
+            <!-- Logo -->
+            <div class="logo-section">
+                <a href="index.html" style="text-decoration: none; color: white;">
+                    <div class="brand-name">Keshab<span class="plus">Store</span></div>
+                    <div class="sub-logo">Explore <span class="plus">Plus</span> <i class="fas fa-star star-icon"></i></div>
+                </a>
             </div>
-            <div class="header-icons">
-                <i class="fas fa-bell"></i>
-                <div class="cart-wrap" onclick="window.location.href='cart.html'">
+
+            <!-- Search Bar (Desktop Only) -->
+            <div class="desktop-search">
+                <div class="search-box">
+                    <input type="text" placeholder="Search for Products, Brands and More">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+
+            <!-- User Actions (Desktop Only: Login/Profile) -->
+            <div class="desktop-user-actions">
+                <!-- Login Button (যদি লগইন না থাকে) -->
+                <button id="desktopLoginBtn" class="login-btn" onclick="window.location.href='login.html'">Login</button>
+                
+                <!-- Profile Menu (যদি লগইন থাকে - Flipkart Style Options) -->
+                <div id="desktopProfileMenu" class="profile-dropdown" style="display: none;">
+                    <span class="user-name">My Account <i class="fas fa-angle-down"></i></span>
+                    
+                    <div class="dropdown-content">
+                        <!-- অপশন ১: My Profile -->
+                        <a href="profile.html">
+                            <i class="fas fa-user-circle"></i> My Profile
+                        </a>
+                        
+                        <!-- অপশন ২: Flipkart Plus Zone -->
+                        <a href="#">
+                            <i class="fas fa-plus-square"></i> Flipkart Plus Zone
+                        </a>
+                        
+                        <!-- অপশন ৩: Orders -->
+                        <a href="orders.html">
+                            <i class="fas fa-box-open"></i> Orders
+                        </a>
+                        
+                        <!-- অপশন ৪: Wishlist -->
+                        <a href="#">
+                            <i class="fas fa-heart"></i> Wishlist
+                        </a>
+                        
+                        <!-- অপশন ৫: Rewards -->
+                        <a href="#">
+                            <i class="fas fa-gift"></i> Rewards
+                        </a>
+                        
+                        <!-- অপশন ৬: Gift Cards -->
+                        <a href="#">
+                            <i class="fas fa-credit-card"></i> Gift Cards
+                        </a>
+
+                        <!-- অপশন ৭: Logout -->
+                        <a href="#" onclick="logoutUser()">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cart Icon -->
+            <div class="header-cart" onclick="window.location.href='cart.html'">
+                <div class="cart-wrap">
                     <i class="fas fa-shopping-cart"></i>
                     <span id="cartCount">0</span>
                 </div>
+                <span class="cart-text">Cart</span>
             </div>
         </div>
-        <!-- সার্চ বার -->
-        <div class="search-bar-wrapper">
+
+        <!-- Mobile Search Bar (Mobile Only) -->
+        <div class="mobile-search-wrapper">
             <div class="search-box">
                 <i class="fas fa-search"></i>
-                <input type="text" id="searchInput" placeholder="Search for Products, Brands and More">
+                <input type="text" placeholder="Search for Products...">
             </div>
         </div>
     </header>
 
-    <!-- ২. ক্যাটাগরি আইকন (Horizontal Scroll) -->
-    <div class="category-scroll">
-        <div class="cat-item"><img src="https://rukminim1.flixcart.com/flap/128/128/image/29327f40e9c4d26b.png" alt="Grocery"><span>Grocery</span></div>
-        <div class="cat-item"><img src="https://rukminim1.flixcart.com/flap/128/128/image/22fddf3c7da4c4f4.png" alt="Mobiles"><span>Mobiles</span></div>
-        <div class="cat-item"><img src="https://rukminim1.flixcart.com/flap/128/128/image/c12afc017e6f24cb.png" alt="Fashion"><span>Fashion</span></div>
-        <div class="cat-item"><img src="https://rukminim1.flixcart.com/flap/128/128/image/69c6589653afdb9a.png" alt="Electronics"><span>Electronics</span></div>
-        <div class="cat-item"><img src="https://rukminim1.flixcart.com/flap/128/128/image/ab7e2b022a4587dd.png" alt="Home"><span>Home</span></div>
+    <!-- ২. ক্যাটাগরি সেকশন -->
+    <div class="category-section">
+        <div class="category-scroll">
+            <div class="cat-item"><img src="https://rukminim1.flixcart.com/flap/128/128/image/29327f40e9c4d26b.png" alt="Grocery"><span>Grocery</span></div>
+            <div class="cat-item"><img src="https://rukminim1.flixcart.com/flap/128/128/image/22fddf3c7da4c4f4.png" alt="Mobiles"><span>Mobiles</span></div>
+            <div class="cat-item"><img src="https://rukminim1.flixcart.com/flap/128/128/image/c12afc017e6f24cb.png" alt="Fashion"><span>Fashion</span></div>
+            <div class="cat-item"><img src="https://rukminim1.flixcart.com/flap/128/128/image/69c6589653afdb9a.png" alt="Electronics"><span>Electronics</span></div>
+            <div class="cat-item"><img src="https://rukminim1.flixcart.com/flap/128/128/image/ab7e2b022a4587dd.png" alt="Home"><span>Home</span></div>
+            <div class="cat-item"><img src="https://rukminim1.flixcart.com/flap/128/128/image/0b5f7ad526b098b3.png" alt="Appliances"><span>Appliances</span></div>
+        </div>
     </div>
 
-    <!-- ৩. ব্যানার ইমেজ -->
+    <!-- ৩. ব্যানার -->
     <div class="banner-section">
-        <img src="https://rukminim1.flixcart.com/fk-p-flap/844/140/image/444869af7d31e58b.jpg" alt="Offer Banner" width="100%">
+        <img src="https://img.freepik.com/premium-vector/special-offer-sale-banner_74379-166.jpg?semt=ais_hybrid&w=740&q=80" alt="Offer Banner">
     </div>
     
     <!-- ৪. প্রোডাক্ট সেকশন -->
-    <div class="section-title">
-        <h3>Recently Added</h3>
-        <button class="view-all">View all</button>
+    <div class="section-wrapper">
+        <div class="section-header">
+            <h3>Recently Added</h3>
+            <button class="view-all-btn">View All</button>
+        </div>
+        
+        <div id="loading" class="loading-spinner">Loading amazing products...</div>
+
+        <!-- Product Grid -->
+        <div class="product-grid" id="productContainer">
+            <!-- JS দিয়ে কার্ড এখানে লোড হবে -->
+        </div>
     </div>
 
-    <div id="loading" class="loading-spinner">Loading amazing products...</div>
-    
-    <div class="product-grid" id="productContainer">
-        <!-- JS দিয়ে কার্ড এখানে আসবে -->
-    </div>
+    <!-- Footer Space for Mobile Nav -->
+    <div style="height: 70px;"></div>
 
-    <!-- স্পেস রাখা যাতে নিচের মেনুতে ঢাকা না পড়ে -->
-    <div style="height: 80px;"></div>
-
-    <!-- ৫. বটম নেভিগেশন বার (Bottom Nav - Updated) -->
+    <!-- ৫. বটম নেভিগেশন (Mobile Only) -->
     <nav class="bottom-nav">
         <div class="nav-item active" onclick="window.location.href='index.html'">
             <i class="fas fa-home"></i>
             <span>Home</span>
         </div>
         <div class="nav-item">
-            <i class="fas fa-th-large"></i>
+            <i class="fas fa-layer-group"></i>
             <span>Categories</span>
         </div>
         <div class="nav-item">
             <i class="fas fa-bell"></i>
-            <span>Notifications</span>
+            <span>Noti</span>
         </div>
-        
-        <!-- Account Section (Updated Logic) -->
-        <div class="nav-item" onclick="checkAccount()">
+        <div class="nav-item" onclick="handleMobileAccount()">
             <i class="fas fa-user"></i>
-            <span id="accountText">Login</span> <!-- এখানে নাম দেখাবে -->
+            <span id="mobileAccountText">Login</span>
         </div>
-        
         <div class="nav-item" onclick="window.location.href='cart.html'">
             <i class="fas fa-shopping-cart"></i>
             <span>Cart</span>
         </div>
     </nav>
 
-    <!-- স্ক্রিপ্ট -->
+    <!-- Scripts -->
     <script src="js/config.js"></script>
     <script src="js/index.js"></script>
 
